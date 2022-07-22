@@ -36,8 +36,15 @@ main {
     filter: invert(0.5)
 }
 .Day {
-    border: none; 
+    border: none;
     background-color: rgba(240, 255, 255, 0.863);
+}
+.Day img {
+    padding: 10px;
+    border-radius: 4px;
+}
+.Day__Selected {
+    border: 2px solid  rgb(4, 252, 252);
 }
 footer { 
     margin-top: 200px;
@@ -46,11 +53,6 @@ footer {
 .Bell {
     border: none; 
     background-color: rgba(240, 255, 255, 0.863); 
-}
-.Seven {
-    font-size: 50px;
-    font-weight: 40;
-    color: rgb(167, 167, 167);
 }
 .Track {
     font-size: 10px;
@@ -85,4 +87,15 @@ footer {
 }
 .Total-time {
     text-align: right;
+}
+
+#time {
+    font-size: 50px;
+    font-weight: 40;
+    color: rgb(167, 167, 167);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background-color: rgba(240, 255, 255, 0.863);
 }

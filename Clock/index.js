@@ -1,4 +1,7 @@
-import {add_track} from "./track.js"
+import {add_track, cleaner_tracks} from "./track.js"
+import {enable_alarm_clock} from "./alarm_clock.js"
+import {parse_seconds} from "./time.js"
+
 let count_seconds = 0
 let is_timer_enabled = false
 
@@ -33,22 +36,8 @@ for (let h = 0; h < buttons.length; h += 1) {
     console.log(buttons[h])
 }
 function show_time(time){
-    let hours = Number.parseInt(time/3600)
-    time -= hours * 3600
-    let minutes = Number.parseInt(time/60)
-    time -= minutes * 60
-    let seconds = time
-    if (hours < 10) {
-        hours = "0" + hours
-    }
-    if (minutes < 10) {
-        minutes = "0" + minutes
-    }
-    if (seconds < 10) {
-        seconds = "0" + seconds
-    }
     let zero = document.querySelector(".Zero")
-    zero.textContent = hours + ":" + minutes + ":" + seconds
+    zero.textContent = parse_seconds(time)
 }
 
 let repeat = document.querySelector(".Repeat")
@@ -60,6 +49,7 @@ repeat.addEventListener("click", function(){
     show_time(count_seconds)
     let flag = document.querySelector(".Flag")
     flag.style.visibility = 'hidden'
+    cleaner_tracks()
 })
 
 flag_1.addEventListener('click', function(){
@@ -67,3 +57,13 @@ flag_1.addEventListener('click', function(){
         add_track(count_seconds)
     }
 })
+
+let bell = document.querySelector(".Bell")
+
+bell.addEventListener('click', function(){
+    if (is_timer_enabled){
+        enable_alarm_clock(count_seconds)
+    }
+})
+
+enable_alarm_clock()
